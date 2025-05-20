@@ -58,8 +58,8 @@ const AdminController = {
                 return res.status(500).json({ error: 'Failed to add book' });
             }
 
-            // Redirect to the allBooks route
-            res.redirect('/admin/allBooks');
+            // Redirect to the addBook route
+            res.redirect('/admin/addBook');
         });
     },
 
