@@ -1,0 +1,63 @@
+<%- include('../layout/user_header') %>
+
+    <div class="container mt-4">
+        <h2>Your Orders</h2>
+
+        <% if (orders && orders.length> 0) { %>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Items</th>
+                            <th>Quantity</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orders.forEach(order=> { %>
+                            <tr>
+                                <td>
+                                    <%= new Date(order.order_date).toLocaleString() %>
+                                </td>
+                                <td>
+                                    <%= order.order_details %>
+                                </td>
+                                <td>
+                                    <%= order.order_quantity %>
+                                </td>
+                                <td>₹<%= order.order_price %>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">Completed</span>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <% } else { %>
+                <div class="alert alert-info">
+                    You haven't placed any orders yet.
+                    <a href="/user/books" class="alert-link">Start shopping</a>
+                </div>
+                <% } %>
+    </div>
+
+    <style>
+        .table {
+            margin-top: 20px;
+        }
+
+        .badge {
+            font-size: 0.9em;
+            padding: 8px 12px;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+
+    <%- include('../layout/user_footer') %>

@@ -1,0 +1,52 @@
+<%- include('../layout/user_header') %>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                        </div>
+                        <h2 class="card-title">Payment Successful!</h2>
+                        <p class="card-text">Your order has been processed successfully.</p>
+                        <div class="alert alert-success">
+                            <p class="mb-0">Thank you for your purchase! A confirmation email has been sent to <%=
+                                    user.email %>.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="/user/books" class="btn btn-primary mr-2">Continue Shopping</a>
+                            <!-- <a href="/user/orders" class="btn btn-outline-primary">View Orders</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-success {
+            color: #28a745 !important;
+        }
+
+        .btn {
+            margin: 0 5px;
+        }
+    </style>
+
+    <script>
+        // Clear cart on success page load
+        fetch('/user/clear-cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).catch(error => console.error('Error clearing cart:', error));
+    </script>
+
+    <%- include('../layout/user_footer') %>
